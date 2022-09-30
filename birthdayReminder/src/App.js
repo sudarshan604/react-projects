@@ -8,7 +8,7 @@ function App() {
   return (
     <main>
       <section className="container ">
-        <h2> {users.length} birthdays today</h2>
+        <h2>{users.length} birthdays today</h2>
 
         {users.map((user) => {
           return <List key={user.id} data={user} />;
