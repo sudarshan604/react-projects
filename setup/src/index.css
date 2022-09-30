@@ -207,7 +207,15 @@ main {
   border-radius: 50%;
   color: var(--clr-red-special);
   cursor: pointer;
+<<<<<<< HEAD
   margin-left: 1rem;
   align-self: center;
   min-width: 2rem;
 }
+=======
+}
+.random-btn:hover {
+  background: var(--clr-primary-5);
+  color: var(--clr-primary-1);
+}
+>>>>>>> 4d2c988c2f1f7690209562d49f00d608929c3009

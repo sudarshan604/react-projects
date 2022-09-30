@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #### Idea
 
 [uidesigndaily](https://uidesigndaily.com/posts/sketch-accordion-website-day-1175)
@@ -18,3 +19,8 @@ const Component = () => {
   return <FaHome className='icon'></FaHome>;
 };
 ```
+=======
+//install react-icon library react-icon-github
+
+npm install react-icons --save
+>>>>>>> 4d2c988c2f1f7690209562d49f00d608929c3009
