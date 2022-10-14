@@ -1,12 +1,15 @@
 import React from 'react';
 
-const Categories = ({selectItem}) => {
+const Categories = ({selectItem,categories}) => {
   
   
   return <div className='btn-container'>
-    <button className='filter-btn' onClick={()=>selectItem('breakfast')}>breakfast</button>
+    { categories.map(item=>{
+        return (
+          <button className='filter-btn' onClick={()=>selectItem(item)}>{item}</button>
+    )
 
-
+     })}
   </div>
 }
 export default Categories;
