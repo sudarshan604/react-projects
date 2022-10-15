@@ -2,8 +2,11 @@ import React, { useState, useContext } from 'react';
 import { data } from '../../../data';
 // more components
 // fix - context api, redux (for more complex cases)
+const PersonContext=React.createContext()
+
 
 const ContextAPI = () => {
+
   const [people, setPeople] = useState(data);
   const removePerson = (id) => {
     setPeople((people) => {
@@ -11,14 +14,14 @@ const ContextAPI = () => {
     });
   };
   return (
-    <>
+    <PersonContext.Provider value={{removePerson,sayHi:'hello'}}>
       <h3>prop drilling</h3>
-      <List people={people} removePerson={removePerson} />
-    </>
+      <List people={people} />
+    </PersonContext.Provider>
   );
 };
 
-const List = ({ people, removePerson }) => {
+const List = ({ people}) => {
   return (
     <>
       {people.map((person) => {
@@ -26,7 +29,6 @@ const List = ({ people, removePerson }) => {
           <SinglePerson
             key={person.id}
             {...person}
-            removePerson={removePerson}
           />
         );
       })}
@@ -34,8 +36,10 @@ const List = ({ people, removePerson }) => {
   );
 };
 
-const SinglePerson = ({ id, name, removePerson }) => {
-  return (
+const SinglePerson = ({ id, name}) => {
+ const {removePerson,sayHi}=useContext(PersonContext)
+ console.log(sayHi) 
+ return (
     <div className='item'>
       <h4>{name}</h4>
       <button onClick={() => removePerson(id)}>remove</button>
