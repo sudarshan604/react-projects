@@ -33,7 +33,20 @@ const {company,title,dates,duties}=data[count]
          <div className='underline'></div>
        </div>
   <div className='job-center'>
-     
+        <div className='btn-container'>
+             {
+               data.map((item,index)=>{
+                   return <button key={item.id} onClick={()=>setCount(index)}
+                   className={`job-btn ${index===count && 'active-btn'}`}
+                   
+                   >
+                     
+                     
+                     {item.company}</button>
+               })
+             }
+
+        </div>
      <article className='job-info'>
           <h3>{title}</h3>
          <h4>{company}</h4>
