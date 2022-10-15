@@ -207,21 +207,12 @@ main {
   border-radius: 50%;
   color: var(--clr-red-special);
   cursor: pointer;
-<<<<<<< HEAD:according/src/index.css
-=======
-<<<<<<< HEAD
->>>>>>> 19dae678b628aaecbaab89eabf72991a7c2fc0d4:setup/src/index.css
   margin-left: 1rem;
   align-self: center;
   min-width: 2rem;
 }
-<<<<<<< HEAD:according/src/index.css
-=======
-=======
-}
+
 .random-btn:hover {
   background: var(--clr-primary-5);
   color: var(--clr-primary-1);
 }
->>>>>>> 4d2c988c2f1f7690209562d49f00d608929c3009
->>>>>>> 19dae678b628aaecbaab89eabf72991a7c2fc0d4:setup/src/index.css

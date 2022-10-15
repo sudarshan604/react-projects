@@ -1,7 +1,6 @@
 import React from "react";
 
 const List = ({ data }) => {
-  console.log(data);
   return (
     <>
       <section className="person">

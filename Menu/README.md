@@ -1,8 +1,14 @@
 # react-projects-5-menu
 
-const allCategories= ['all',...new Set(items.map(item=>item.category))]
-console.log(allCategories)
---> is used to select dynamic category 
---> new Set() is return unique value as an object because off that we use destructure to 
- make it object and all to make it array and adding 'all' so that it is always there
+const url = 'https://course-api.com/react-tabs-project'
+ used to fetch data from this api
 
+   const[count,setCount]=useState(0)
+used for selection of array of data
+
+const {company,title,date,duties}=data[count]
+ destructring object from the data at index number count
+
+
+ import { FaAngleDoubleRight } from 'react-icons/fa'
+  import icon from react icon this icon-->( >>)
