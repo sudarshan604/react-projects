@@ -17,7 +17,10 @@ const StyleNavBar = () => {
       >
         About
       </NavLink>
+
       <NavLink to="/product">product</NavLink>
+      <NavLink to="/login">login</NavLink>
+      <NavLink to="/dashboard">dashboard</NavLink>
     </nav>
   );
 };
