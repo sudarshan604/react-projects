@@ -8,7 +8,7 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState({ show: false, msg: "" });
-  const [movie, setMovie] = useState([]);
+  const [movies, setMovie] = useState([]);
   const [query, setQuery] = useState("batman");
 
   const fetchMovies = async (url) => {
@@ -33,7 +33,7 @@ const AppProvider = ({ children }) => {
   }, [query]);
 
   return (
-    <AppContext.Provider value={{ isLoading, error, movie, query, setQuery }}>
+    <AppContext.Provider value={{ isLoading, error, movies, query, setQuery }}>
       {children}
     </AppContext.Provider>
   );
