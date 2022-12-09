@@ -1,29 +1,23 @@
-// import store from "./store";
-// import * as actions from "./actionType";
-
-// import { bugAdded, bugResolved } from "./action";
-
-// const unscribe = store.subscribe(() => {
-//   console.log("store changed", store.getState());
-// });
-
-// store.dispatch(bugAdded("bug1"));
-// unscribe();
-
-// store.dispatch({
-//   type: actions.BUG_REMOVED,
-//   payload: {
-//     id: 1,
-//   },
-// });
-
-// store.dispatch(bugResolved(1));
-
-// console.log(store.getState());
-
-import store from "./CustomStore";
+import store from "./store";
 import * as actions from "./action";
 
-store.subscribe(() => {});
+store.subscribe(() => {
+  console.log("store changed");
+});
 
-store.dispatch(actions.bugAdded("bug1"));
+store.dispatch(actions.bugAdded("bug 1"));
+store.dispatch(actions.bugAdded("bug 1"));
+store.dispatch(actions.bugAdded("bug 1"));
+store.dispatch(actions.bugAdded("bug 1"));
+store.dispatch(actions.bugResolved(1));
+
+console.log(store.getState());
+
+// custom redux
+
+// import store from "./CustomStore";
+// import * as actions from "./action";
+
+// store.subscribe(() => {});
+
+// store.dispatch(actions.bugAdded("bug1"));

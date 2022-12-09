@@ -90,3 +90,12 @@ draftBook.isPublished=true
 }
 
 const updatedBook=publish(book)
+
+//
+
+redux devtools extenxiion install
+npm i redux-devtools-extension
+
+in webpack,config adding
+devtool: "source-map",
+because of that by default vscode is open after adding path in redux extension setting path
