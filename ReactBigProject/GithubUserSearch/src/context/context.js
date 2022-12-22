@@ -7,7 +7,7 @@ import axios from 'axios';
 const rootUrl = 'https://api.github.com';
 
 
-const AppContext=React.createContext()
+const GithubContext=React.createContext()
 
 const GithubProvider=({children})=>{
 
@@ -17,10 +17,10 @@ const GithubProvider=({children})=>{
 
 
 
- return <AppContext.Provider value={{githubUser,githubRepo,githubFollowers}}>
+ return <GithubContext.Provider value={{githubUser,githubRepo,githubFollowers}}>
         {children}
- </AppContext.Provider>
+ </GithubContext.Provider>
 
 }
 
-export {GithubProvider,AppContext}
+export {GithubContext,GithubProvider}
