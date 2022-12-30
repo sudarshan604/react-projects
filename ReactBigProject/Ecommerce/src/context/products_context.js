@@ -11,10 +11,18 @@ import {
   GET_SINGLE_PRODUCT_BEGIN,
   GET_SINGLE_PRODUCT_SUCCESS,
   GET_SINGLE_PRODUCT_ERROR,
+
 } from '../actions'
 
 const initialState = {
- isSideBarOPen:false
+ isSideBarOPen:false,
+ isLoading:false,
+ Error_loading:false,
+ products:[],
+ feature_Product:[],
+ single_product_loading:false,
+ single_product_error:false,
+ single_product:{}
 
 }
 
@@ -32,8 +40,43 @@ const closeSidebar=()=>{
 }
 
 
+const fetchProduct=async(url)=>{
+ dispatch({type:GET_PRODUCTS_BEGIN})
+try{
+     const response= await axios.get(url)
+     const data=response.data 
+ 
+   dispatch({type:GET_PRODUCTS_SUCCESS,payload:data})
+  }   
+catch(error)
+  {
+     dispatch({type:GET_PRODUCTS_ERROR})
+  }
+
+}
+
+const singleProduct=async(url)=>{
+  dispatch({type:GET_SINGLE_PRODUCT_BEGIN})
+   try{
+      const response=await axios.get(url)
+      const data=response.data
+     dispatch({type:GET_SINGLE_PRODUCT_SUCCESS,payload:data})    
+    }
+    catch{
+      
+     dispatch({type:GET_SINGLE_PRODUCT_ERROR})    
+    } 
+
+}
+
+
+
+useEffect(()=>{
+  fetchProduct(url)
+},[])
+
   return (
-    <ProductsContext.Provider value={{...state,openSidebar,closeSidebar}}>
+    <ProductsContext.Provider value={{...state,openSidebar,closeSidebar,singleProduct}}>
       {children}
     </ProductsContext.Provider>
   )

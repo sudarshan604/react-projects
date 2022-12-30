@@ -12,7 +12,7 @@ const CheckoutPage = () => {
           <h1>
             checkout here
           </h1>
-
+        <h3>checkout page</h3>
        </Wrapper>
 
   </main>
