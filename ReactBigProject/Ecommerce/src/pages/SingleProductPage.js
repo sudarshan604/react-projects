@@ -23,7 +23,7 @@ const SingleProductPage = () => {
 useEffect(()=>{
   singleProduct(`${url}${id}`)
 
-},[id])
+},[id]) 
 
 useEffect(()=>{
   if(error===true)
@@ -58,7 +58,7 @@ const {company,name,price,description,stars,reviews,stock,id:sku,images}=product
       <section className='content'>
          <h2>{name}       </h2>
         <Stars  stars={stars} reviews={reviews}/>
-         <h5 className='price'>{formatPrice(price)}</h5>
+          <h5 className='price'>{formatPrice(price)}</h5>
           <p className='desc'>{description}</p>
        <p className='info'>
           <span>Available:</span>
@@ -73,7 +73,7 @@ const {company,name,price,description,stars,reviews,stock,id:sku,images}=product
           {company}
        </p>
       <hr/>
-          {stock > 0 && <AddToCart/>}
+          {stock > 0 && <AddToCart product={product}/>}
 </section>
           </div> 
 
