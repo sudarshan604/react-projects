@@ -16,7 +16,8 @@ import userEvent from '@testing-library/user-event'
 const initialState = {
   all_products:[],
   filter_products:[],
-  grid_view:false
+  grid_view:false,
+  sort:''
 
 }
 
@@ -32,6 +33,10 @@ useEffect(()=>{
 
   },[products])
  
+useEffect(()=>{
+   dispatch({type:SORT_PRODUCTS})
+},[state.sort])
+
 const gridView=()=>{
   dispatch({type:SET_GRIDVIEW})
 }
@@ -39,9 +44,14 @@ const listView=()=>{
   dispatch({type:SET_LISTVIEW})
 }
 
+ const updateSort=(e)=>{
+   const value=e.target.value
+  dispatch({type:UPDATE_SORT,payload:value})
+  }
+
   
   return (
-    <FilterContext.Provider value={{...state,gridView,listView}}>
+    <FilterContext.Provider value={{...state,gridView,listView,updateSort}}>
       {children}
     </FilterContext.Provider>
   )
