@@ -1,0 +1,25 @@
+html{
+ font-size:56%;
+
+}
+
+*,::before,
+::after{
+  margin:0;
+  padding:0;
+}
+body{
+}
+.container{
+  max-width:114rem;
+ margin:0 auto;
+}
+
+.bg-w{
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+  background-color:#fff;
+}
+.flex{
+  display: flex;
+ align-items: center;
+}
