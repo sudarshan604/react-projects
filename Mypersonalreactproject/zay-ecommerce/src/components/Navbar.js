@@ -26,7 +26,7 @@ const NavBar=()=>{
              <ul className="page-navigation flex">
                 {header.map((item)=>{
 
-                  return <li>
+                  return <li key={item.id}>
                   
                   <Link className="header-link" to={item.pagination}>{item.name}</Link>
                   </li>

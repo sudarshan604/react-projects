@@ -7,8 +7,7 @@ import data from "../utils/HeroData"
 const Hero=()=>{
  const [people,setPeople]=useState(data)
  const [index,setIndex]=useState(0)
-
- let isActive=false
+ let isActive=0
  useEffect(() => {
   let lastIndex = people.length - 1;
   if (index < 0) {
@@ -28,17 +27,19 @@ return ()=>clearInterval(interval)
 },[index])
 
 
+
+
   return<Wrapper>
          <div className="carousal-content container flex">
            {
                  people.map((item,itemIndex)=>{
 
+                  //  isActive=0
                  const {id,img,h1Heading,sHeading,paragraph}=item
                 let position="nextSLide"
-                isActive=false  
                     if(index===itemIndex){
-                  isActive=true
-                  position="active"
+                       isActive=index
+                      position="active"
 
 
                  }
@@ -47,7 +48,6 @@ return ()=>clearInterval(interval)
                   itemIndex == index - 1 ||
                   (index === 0 && itemIndex == people.length - 1)
                 ) {
-                  isActive=false
 
                   position = "lastSlide";
                 }
@@ -69,9 +69,9 @@ return ()=>clearInterval(interval)
 
            } 
          <div className="rode">
-               <div className={`${isActive?"agreen green":"green hide"}`}></div>
-               <div className={`${isActive?"agreen green":"green hide"}`}></div>
-               <div className={`${isActive?"agreen green":"green hide"}`}></div>
+               <div className={`${isActive===0?"agreen green":"green hide"}`}></div>
+               <div className={`${isActive===1?"agreen green":"green hide"}`}></div>
+               <div className={`${isActive===2?"agreen green":"green hide"}`}></div>
         </div>
 
        </div>
@@ -93,7 +93,7 @@ export default Hero
      background-color:#e6e6e6;
       height:100vh;
       padding-bottom:10rem;
-      margin-bottom:300px;
+      /* margin-bottom:300px; */
    overflow:hidden;
       .carousal-content{
    height:100vh;

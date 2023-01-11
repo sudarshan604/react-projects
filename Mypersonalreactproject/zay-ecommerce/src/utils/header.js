@@ -9,20 +9,20 @@ export const header=
 
    },
    {
-    id:1,
+    id:2,
     pagination:'/about',
     name:'About'
 
    },
    {
-    id:1,
+    id:3,
     pagination:'/product',
     name:'Shop'
 
    },
 
    {
-    id:1,
+    id:4,
     pagination:'/about',
     name:'Contact'
 

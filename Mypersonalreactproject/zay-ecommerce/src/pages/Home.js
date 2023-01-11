@@ -1,12 +1,15 @@
 import React from "react"
-import { Navbar,Hero } from "../components"
+import { Navbar,Hero,Category } from "../components"
+
+
 
 const Home=()=>{
 
   return( 
    <main>
   <Navbar/>
-          <Hero/>
+    <Hero/>
+    <Category/>
  </main>
   )
 }
