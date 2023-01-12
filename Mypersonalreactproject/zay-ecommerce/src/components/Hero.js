@@ -69,9 +69,9 @@ return ()=>clearInterval(interval)
 
            } 
          <div className="rode">
-               <div className={`${isActive===0?"agreen green":"green hide"}`}></div>
-               <div className={`${isActive===1?"agreen green":"green hide"}`}></div>
-               <div className={`${isActive===2?"agreen green":"green hide"}`}></div>
+               <div  onClick={() => setIndex(0)} className={`${isActive===0?"agreen green":"green hide"}`}></div>
+               <div onClick={() => setIndex(1)}  className={`${isActive===1?"agreen green":"green hide"}`}></div>
+               <div  onClick={() => setIndex(2)}   className={`${isActive===2?"agreen green":"green hide"}`}></div>
         </div>
 
        </div>
@@ -121,6 +121,10 @@ export default Hero
   border-radius:3px;
  background-color:green;
  border:1p solid green;
+ :hover{
+  cursor: pointer;
+ }
+
 }
 .hide{
   opacity:.4

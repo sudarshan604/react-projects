@@ -28,7 +28,8 @@ try{
 
    const response=await fetch("https://fakestoreapi.com/products")
    const data=await  response.json()
-  dispatch({type:PRODUCT_SUCCESS,payload:data})
+  console.log(data)
+   dispatch({type:PRODUCT_SUCCESS,payload:data})
 
 }
 catch(error){

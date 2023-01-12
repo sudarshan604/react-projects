@@ -1,3 +1,16 @@
+export const Star=({star,price})=>{
+
+   const tempStar=Array.from({length:5},(_,index)=>{
+   
+        const  newIndex= index+0.5
+   return <span>
+      {
+        star>=index+1?<BsStarFill/>:star>=newIndex?<BsStarHalf/>:<BsStar/>
+      }
+   </span>
+   })  
+   
+   }
 
 
 export const header=

@@ -1,13 +1,14 @@
 import { useEffect } from "react"
 import styled from "styled-components"
 import { useGlobalProductContext } from "../context/product_context"
+
+
 const Category=()=>{
 
 const {category_product:products,isLoading}=useGlobalProductContext()
 
 
 const newProduct=products.slice(0,3)
-console.log(newProduct)
   return <Wrapper className="container">
               <div className="header">
                 <h4>Categories of The Month</h4>
@@ -56,7 +57,9 @@ const Wrapper=styled.section`
   font-size:4.8rem;
   h4{
   font-weight:200;
- }
+ margin-bottom:2rem; 
+}
+
   p{ 
   margin:0 auto;
   max-width:50rem;
@@ -69,17 +72,20 @@ const Wrapper=styled.section`
    grid-template-columns:repeat(3,1fr);
   column-gap:3rem;
   figure{ 
-   width:60%;
- height:60%;
+   width:80%;
+ height:100%;
  display:flex;
- padding:1rem;
  align-items:center;
+ justify-content:center;
    border-radius:50%;
-    border:4px solid red;
-    img{
-   width:100%;
+   img{
+      background-color:#ffffff;
+      border:2px solid #fff;
+   width:80%;
+   padding:3rem;
+   border-radius:50%;
    height:auto;
-   transform:rotateX(70deg) 
+   /* transform:rotateX(70deg)  */
   }
   }
 div{
@@ -87,17 +93,21 @@ div{
  flex-direction:column;
  justify-content:center;
  align-items:center;
-
-  h3{
+ row-gap:2rem;
+ h3{
     font-size:3rem;
     text-align:center;
   }
  button{
-  background-color:green;
+  background-color:#33ff33;
   border:none;
   color:#fff;
   padding:1rem 2rem;
- }
+  border-radius:3px;
+  :hover{
+    cursor: pointer;
+  }
+}
 }
 
 

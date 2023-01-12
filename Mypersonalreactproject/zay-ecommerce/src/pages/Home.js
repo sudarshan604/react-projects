@@ -1,5 +1,5 @@
 import React from "react"
-import { Navbar,Hero,Category } from "../components"
+import { Navbar,Hero,Category,Feature } from "../components"
 
 
 
@@ -10,6 +10,7 @@ const Home=()=>{
   <Navbar/>
     <Hero/>
     <Category/>
+   <Feature/>
  </main>
   )
 }

@@ -1,7 +1,7 @@
 import { AiOutlineMail,AiOutlineSearch,AiOutlineShoppingCart,AiOutlineUserAdd } from "react-icons/ai";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { header } from "../utils/header";
+import { header } from "../utils/Helper";
 
 const NavBar=()=>{
 

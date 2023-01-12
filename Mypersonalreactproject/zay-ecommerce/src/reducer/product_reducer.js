@@ -16,9 +16,16 @@ if(action.type===PRODUCT_SUCCESS)
      }
 
   })
+  const feature_product=action.payload.filter(item=>{
+    if(item.rating.count>400)
+{
+       return item
+}
 
- 
-  return {...state,products:action.payload,category_product:category_data}
+})
+
+
+  return {...state,products:action.payload,category_product:category_data,feature_product}
 }
 
 
