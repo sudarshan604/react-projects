@@ -1,8 +1,49 @@
+import React, { useEffect } from 'react'
+import styled from 'styled-components'
+import { useParams } from 'react-router-dom'
+import { useGlobalProductContext } from '../context/product_context'
+import {singleUrl} from '../utils/Constraints'
 
-const Single=()=>{
+const SingleProduct=()=> {
+  
+  const {singleProduct}=useGlobalProductContext()
 
-  return <div>single</div>
+  const {id}=useParams()
+
+useEffect(()=>{
+   singleProduct(`${singleUrl}${id}`)
+},[id])
+
+
+  console.log(id)
+  return (<Wrapper>    
+            <section className='section-first'>
+                       <div>
+                               <figure>
+                                <img src="" alt="" />
+                               </figure>
+                       </div>
+                       
+        <div>
+
+        </div>
+
+  </section>
+
+ 
+   </Wrapper>
+  )
 }
 
+export default SingleProduct
 
-export default Single
+ const Wrapper=styled.div`
+    
+   
+
+    
+   
+ 
+
+
+`

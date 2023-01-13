@@ -15,7 +15,6 @@ return <span>
 </span>
 })
 
-console.log(tempStar)
 
 
  return  <Wrapper>
@@ -35,12 +34,9 @@ const Wrapper = styled.div`
   align-items: center;
   span {
     color: #ffb900;
-    font-size: 1rem;
+    font-size: 2rem;
     margin-right: 0.25rem;
   }
-  p {
-    margin-left: 0.5rem;
-    margin-bottom: 0;
-  }
+
   margin-bottom: 0.5rem;
 `

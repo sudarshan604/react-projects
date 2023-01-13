@@ -10,14 +10,14 @@ if(action.type===PRODUCT_BEGIN)
 if(action.type===PRODUCT_SUCCESS)
 {
   const category_data=action.payload.filter(item=>{
-         if(item.rating.rate>4)
+         if(item.price>1000)
      {
             return item
      }
 
   })
   const feature_product=action.payload.filter(item=>{
-    if(item.rating.count>400)
+    if(item.featured==true)
 {
        return item
 }

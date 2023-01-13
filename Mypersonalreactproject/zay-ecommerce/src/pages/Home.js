@@ -7,7 +7,6 @@ const Home=()=>{
 
   return( 
    <main>
-  <Navbar/>
     <Hero/>
     <Category/>
    <Feature/>

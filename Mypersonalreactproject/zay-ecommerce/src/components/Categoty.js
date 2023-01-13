@@ -8,7 +8,7 @@ const Category=()=>{
 const {category_product:products,isLoading}=useGlobalProductContext()
 
 
-const newProduct=products.slice(0,3)
+const newProduct=products.slice(6,9)
   return <Wrapper className="container">
               <div className="header">
                 <h4>Categories of The Month</h4>
@@ -72,19 +72,17 @@ const Wrapper=styled.section`
    grid-template-columns:repeat(3,1fr);
   column-gap:3rem;
   figure{ 
-   width:80%;
- height:100%;
- display:flex;
- align-items:center;
- justify-content:center;
-   border-radius:50%;
+  margin-top:4rem;
+    display:flex;
+  align-items:center;
+  justify-content:center;
    img{
       background-color:#ffffff;
       border:2px solid #fff;
-   width:80%;
-   padding:3rem;
+     width:85%;
+     height:85;
+     object-fit:contain;
    border-radius:50%;
-   height:auto;
    /* transform:rotateX(70deg)  */
   }
   }
