@@ -4,13 +4,16 @@ import SongList from "./components/SongList";
 import SongPlay from "./components/SongPlay";
 import { Grid } from "@mui/material";
 
+
 function App() {
  
   return (
    <>
        <Header/>
        <Grid container>
-       <Grid item xs={12} md={7}>
+       <Grid style={{
+        paddingTop:'80px'
+       }} item xs={12} md={7}>
        <AddSong/>
        <SongList />
        </Grid>
