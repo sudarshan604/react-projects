@@ -33,14 +33,14 @@ export const header=
    },
    {
     id:3,
-    pagination:'/product',
+    pagination:'/products',
     name:'Shop'
 
    },
 
    {
     id:4,
-    pagination:'/about',
+    pagination:'/contact',
     name:'Contact'
 
    },

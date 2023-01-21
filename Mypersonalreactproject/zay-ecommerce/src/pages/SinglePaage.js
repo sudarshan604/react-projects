@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom'
 import { useGlobalProductContext } from '../context/product_context'
 import {singleUrl} from '../utils/Constraints'
 import { useState } from 'react'
-import { Loading,ProductImage } from '../components'
+import { Loading,ProductImage,Color,AddCart } from '../components'
+import Star from '../components/Star'
 
 
 const SingleProduct=()=> {
@@ -14,7 +15,6 @@ const SingleProduct=()=> {
   
   
   
-
 useEffect(()=>{
    singleProduct(`${singleUrl}${id}`)
 },[])
@@ -28,8 +28,9 @@ if(isLoading)
 
 
 
-const {images,name,description,price,company}=product
+const {images,name,description,price,company,stars,colors,stock}=product
   
+console.log(product)
   return (<Wrapper>   
     <div className='container'>
             <section className='section-first'>
@@ -40,11 +41,17 @@ const {images,name,description,price,company}=product
                          <div className='text-div bg-w flex'>
                              <h3>{name}</h3>
                              <h4>{price}</h4>
+                              <Star star={stars}/>
                               <h4>company:<span className='less-op'>{company}</span></h4>
+                             <h3>colors</h3>
+                              <div className='flex color-div'>
+                                  <Color colors={colors}/>
+                              </div>
                             <div className='desc'> 
                                <h3 className='heading-tertiary'>Description:</h3>
                               <p>{description}</p>
                             </div>
+                          <AddCart stock={stock}/>
                          </div>
                        </div> 
                       
@@ -53,9 +60,9 @@ const {images,name,description,price,company}=product
         </div>
 
   </section>
+     <h1 className='secondary-heading'>Related Products</h1>
   </div> 
- 
-   </Wrapper>
+ </Wrapper>
   )
  }
 
@@ -64,7 +71,8 @@ export default SingleProduct
  const Wrapper=styled.div`
  padding-top:7rem;
    background-color:#e9eef5 !important;
-     .image-div{
+
+   .image-div{
       background-color:#e9eef5 !important;
       display:grid;
       grid-template-columns:40% 60%;
@@ -104,8 +112,11 @@ export default SingleProduct
       font-size:1.8rem;
       line-height:1.5;
       font-weight:300;
-    
-    
+     }
   }
-  }
+.secondary-heading{
+   padding:3rem 0;
+   font-size:2.4rem;
+}
+
 `
