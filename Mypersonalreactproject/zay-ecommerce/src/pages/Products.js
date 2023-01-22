@@ -8,7 +8,7 @@ const Product=()=>{
 
   return <Wrapper>
        <FilterCategory category={category}/>
-        <ProductList products={products}/>
+        <ProductList/>
 </Wrapper>
 }
 

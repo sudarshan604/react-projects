@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import styled from "styled-components"
 import { useGlobalProductContext } from "../context/product_context"
-
+import { Link } from "react-router-dom"
 
 const Category=()=>{
 
@@ -25,7 +25,11 @@ const newProduct=products.slice(6,9)
                   </figure>
              <div>
                   <h3>{category}</h3>  
-                 <button>GO shop</button>
+                 <button>
+                  <Link style={{textDecoration:"none",color:"#fff"}} to="/products">
+                  GO shop
+                  </Link>
+                  </button>
              </div>
         
        </div>

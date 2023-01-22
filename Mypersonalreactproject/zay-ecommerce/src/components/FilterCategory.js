@@ -4,7 +4,6 @@ import styled from 'styled-components'
 
 function FilterCategory({category=[]}) {
   
-  console.log(category)
   return (
     <Wrapper>
         <h2 className='title'>Category</h2>

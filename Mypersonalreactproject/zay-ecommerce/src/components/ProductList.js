@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import ProductCard from "./ProductCard";
 import { useGlobalCategoryContext } from "../context/category_context";
-function ProductList({ products }) {
- const {updateSort}=useGlobalCategoryContext()
+function ProductList() {
+ const {updateSort,filter_Products:products}=useGlobalCategoryContext()
  
    return (
     <Wrapper>
