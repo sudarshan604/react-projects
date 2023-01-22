@@ -14,7 +14,8 @@ export const CategoryProvider=({children})=>{
  const {products}=useGlobalProductContext()
 
  const initialState={
-  All_Products:[] 
+  All_Products:[],
+  category:[], 
  }
 
 const [state,dispatch]=useReducer(reducer,initialState)
@@ -26,8 +27,12 @@ useEffect(()=>{
    dispatch({type:ALL_PRODUCT_BEGIN,payload:products})
 },[products])
 
+const updateSort=(value)=>{
 
-return <CategoryContext.Provider value={{...state}}>
+}
+
+
+return <CategoryContext.Provider value={{...state,updateSort}}>
      {children}
 </CategoryContext.Provider>
 
