@@ -1,11 +1,16 @@
-import { AiOutlineMail,AiOutlineSearch,AiOutlineShoppingCart,AiOutlineUserAdd } from "react-icons/ai";
+import { AiOutlineMail,AiOutlineSearch,AiOutlineShoppingCart,AiOutlineUserAdd,AiHam } from "react-icons/ai";
+import {FiMenu} from "react-icons/fi"
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { header } from "../utils/Helper";
-
+import { useGlobalProductContext } from "../context/product_context";
+import Sidebar from "./Sidebar";
+import React from "react";
 const NavBar=()=>{
+const {isOpen,openSideBar}=useGlobalProductContext()
 
-    return (
+    return (<React.Fragment>
+         {isOpen && <Sidebar/> }
       <Wrapper>
          <nav className="first-nav container">
             <div>
@@ -25,7 +30,7 @@ const NavBar=()=>{
                </figure>
              <ul className="page-navigation flex">
                 {header.map((item)=>{
-
+                  
                   return <li key={item.id}>
                   
                   <Link className="header-link" to={item.pagination}>{item.name}</Link>
@@ -38,11 +43,14 @@ const NavBar=()=>{
                  <AiOutlineShoppingCart className="icon"/>
                  <AiOutlineUserAdd className="icon"/>
            </section>
-         
+          <div className="ham">
+             <FiMenu onClick={()=>openSideBar()} className="icon ham-icon"/>
+          </div>
          
           </section> 
           </div>
       </Wrapper>
+                </React.Fragment>
     )
 }
 export default NavBar
@@ -86,13 +94,7 @@ const Wrapper=styled.header`
     list-style:none;
   }
   
-  .header-link{
-    text-decoration:none;
-    font-size:2.4rem;
-    color:#333;
-  font-weight:300;
-
-}
+  
  .header-icons{
    column-gap:1.4rem;
 }
@@ -100,6 +102,24 @@ const Wrapper=styled.header`
 .icon{
   fill:#111;
   font-size:3rem;
-}  
+} 
+
+.ham-icon{
+  color:#777;
+  margin-right:8rem;
+ 
 }
+}
+.ham{
+  display:none;
+ cursor: pointer;
+}
+@media (max-width: 900px) {
+    .page-navigation,.header-icons{
+      display:none
+    }
+   .ham{
+    display:block;
+   }
+  }
 `

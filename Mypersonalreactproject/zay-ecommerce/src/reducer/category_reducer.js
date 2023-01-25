@@ -1,4 +1,4 @@
-import { ALL_PRODUCT_BEGIN,UPDATE_SORT,SORT_PRODUCT } from "../action/action"
+import { ALL_PRODUCT_BEGIN,UPDATE_SORT,SORT_PRODUCT,UPDATE_CATEGORY, SORT_CATEGORY } from "../action/action"
 
 const reducer=(state,action)=>{
  
@@ -12,15 +12,17 @@ const reducer=(state,action)=>{
 
 if(action.type===UPDATE_SORT)
 {
-  console.log(action.payload)
-   return {...state,sort:action.payload}
+  return {...state,sort:action.payload}
 }
+
+
 
 if(action.type===SORT_PRODUCT)
 {
  const {sort,filter_Products}=state
-  let temp_products=filter_Products
-  console.log("SORT,",sort,filter_Products)
+console.log(filter_Products)
+
+ let temp_products=filter_Products
   if(sort==="price-lowest")
    {
     temp_products=filter_Products.sort((a,b)=>{
@@ -51,22 +53,41 @@ if(action.type===SORT_PRODUCT)
   }
 
 
-
-
-
-
-
-
-
-
     return {...state,filter_Products:temp_products}
   
   }
 
 
 
+  if(action.type===UPDATE_CATEGORY)
+  {
+    return {...state,sort_category:action.payload}
+  }
 
 
+if(action.type===SORT_CATEGORY)
+{
+  let {sort_category,filter_Products,All_Products}=state
+   filter_Products=All_Products
+ if(sort_category==="All")
+ {
+  return {...state,filter_Products}
+
+ }
+  
+
+  let temp_products=filter_Products.filter(item=>{
+    if(item.category===sort_category)
+    {
+       return item
+    }
+  
+  })
+
+  return {...state,filter_Products:temp_products}
+
+
+}
 
 
   return {...state}

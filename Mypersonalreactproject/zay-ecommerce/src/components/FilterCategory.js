@@ -1,15 +1,22 @@
 import React from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
-
+import { useGlobalCategoryContext } from '../context/category_context'
 
 function FilterCategory({category=[]}) {
-  
+  const [isUnderline,setUnderline]=useState('')
+
+  const {sortCategory}=useGlobalCategoryContext()
+
   return (
     <Wrapper>
         <h2 className='title'>Category</h2>
     <div>
         {category.map((item,index)=>{
-                 return <h3 key={index}>{item}</h3>          
+                 return <h3  className={`${isUnderline===item?"active":null}`}  onClick={()=>{
+                  setUnderline(item)
+                  sortCategory(item)
+                }}  key={index}>{item}</h3>          
         })}
     </div>
 
@@ -34,7 +41,12 @@ const Wrapper=styled.div`
    h3{
      color:#707c94;
     cursor: pointer;
-    }
-    }
+    width:fit-content;
+    padding-bottom:0.1rem;  
+  }
 
+    }
+.active{
+  box-shadow:0px 2px 1px #008000;
+}
 `

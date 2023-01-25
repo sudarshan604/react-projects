@@ -3,6 +3,7 @@ import { useReducer,useEffect, useContext } from "react";
 import { createContext } from "react";
 import { PRODUCT_BEGIN,PRODUCT_SUCCESS,PRODUCT_Fail,SINGLE_PRODUCT_BEGIN,SINGLE_LOAD} from "../action/action";
 import { url } from "../utils/Constraints";
+import { useState } from "react";
 
 
 
@@ -20,6 +21,7 @@ const initialState={
 
 export const ProductProvider=({children})=>{
 
+ const [isOpen,setOpen]=useState(false) 
 const [state,dispatch]=useReducer(reducer,initialState)
 
 
@@ -59,9 +61,13 @@ const singleProduct= async (url)=>{
 
 }
 
+const openSideBar=()=>{
+  setOpen(!isOpen)
+}
 
 
-return <ProductContext.Provider value={{...state,singleProduct}}>
+
+return <ProductContext.Provider value={{...state,singleProduct,isOpen,openSideBar}}>
      {children}
 </ProductContext.Provider>
 
