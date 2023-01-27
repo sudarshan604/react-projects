@@ -12,10 +12,16 @@ export const getUniqueValues = (data,type) => {
     
 
     
-    const allValue=data.map(item=>item[type])
+    let allValue=data.map(item=>item[type])
 
- const uniqueValue=['all',...new Set(allValue)]
-
+    
+    if(type==="colors")
+    {
+        allValue=allValue.flat()
+    }
  
+    let uniqueValue=['all',...new Set(allValue)]
+    
+
  return uniqueValue
 }

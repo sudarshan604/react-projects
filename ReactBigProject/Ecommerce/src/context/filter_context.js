@@ -19,10 +19,10 @@ const initialState = {
   grid_view:false,
   sort:'',
   filters:{
-    text:' ',
-    company:'All',
-    category:"All",
-    color:"All",
+    text:'',
+    company:'all',
+    category:"all",
+    color:"all",
     min_price:0,
     max_price:0,
     price:0,
@@ -67,12 +67,27 @@ const listView=()=>{
         {
           value=e.target.textContent
         }
+        if(name==='color')
+        {
+          value=e.target.dataset.color
+        }
+        
+        if(name==='price')
+        {
+          value=Number(value)
+        }
+        
+   if(name=="shipping")
+   {
+    value=e.target.checked
+   }
+
 
               dispatch({type:UPDATE_FILTERS,payload:{name,value}})
-            }
+                }
 
   const clearFilter=()=>{
-
+     dispatch({type:CLEAR_FILTERS})
   }
 
 
