@@ -1,4 +1,4 @@
-import { ALL_PRODUCT_BEGIN,UPDATE_SORT,SORT_PRODUCT,UPDATE_CATEGORY, SORT_CATEGORY } from "../action/action"
+import { ALL_PRODUCT_BEGIN,UPDATE_SORT,SORT_PRODUCT,UPDATE_CATEGORY, SORT_CATEGORY, CLEAR_FILTER } from "../action/action"
 
 const reducer=(state,action)=>{
  
@@ -67,34 +67,87 @@ console.log(filter_Products)
 
   if(action.type===UPDATE_CATEGORY)
   {
-    return {...state,sort_category:action.payload}
+   
+   const name=action.payload.name
+   const value=action.payload.value
+   
+    return {...state,filters:{
+      ...state.filters,
+         [name]:value  
+    }}
+  
   }
+
+
 
 
 if(action.type===SORT_CATEGORY)
 {
-  let {sort_category,filter_Products,All_Products}=state
-   filter_Products=All_Products
- if(sort_category==="All")
- {
-  return {...state,filter_Products}
+ const {All_Products} =state
+const {text,category,company,color,price,max_price,min_price,shipping,}=state.filters
 
+console.log(category)
+let tempProducts=All_Products
+
+if(category){
+   if(category.toLowerCase()==="all")
+   {
+   tempProducts=All_Products
+  }
+   else{
+   tempProducts=tempProducts.filter(item=>item.category===category) 
+   }
+}
+if(company){
+  if(company.toLowerCase()==="all")
+  {
+  tempProducts=All_Products
  }
-  
-
-  let temp_products=filter_Products.filter(item=>{
-    if(item.category===sort_category)
-    {
-       return item
-    }
-  
-  })
-
-  return {...state,filter_Products:temp_products}
-
-
+  else{
+  tempProducts=tempProducts.filter(item=>item.company===company) 
+  }
 }
 
+
+if(color!=='all')
+{
+  tempProducts=tempProducts.filter(product=>{
+   return product.colors.find((c)=>c==color)
+  }) 
+}
+
+tempProducts=tempProducts.filter(product=>product.price<=price)
+
+
+if(shipping)
+{
+  tempProducts=tempProducts.filter(product=>product.shipping===true)   
+}
+
+
+
+
+return{...state,filter_Products:tempProducts}
+}
+
+
+
+
+
+if(action.type===CLEAR_FILTER){
+ 
+  return{
+    ...state,
+    filters:{
+     ...state.filters,
+     text:'',
+     company:'all',
+     category:"all",
+     color:"all",
+     price:state.filters.max_price,
+     shipping:false}
+  }
+}
 
   return {...state}
 

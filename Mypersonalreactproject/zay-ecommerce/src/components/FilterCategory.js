@@ -7,13 +7,12 @@ import { uniqueValue } from '../utils/Constraints'
 function FilterCategory() {
   const [isUnderline,setUnderline]=useState('')
   const [mainColor,setMainColor]=useState('')
-  const {sortCategory,All_Products,filters:{price,max_price,min_price,shipping}}=useGlobalCategoryContext()
+  const {clearFilter,sortCategory,All_Products,filters:{price,max_price,min_price,shipping}}=useGlobalCategoryContext()
 
  const category=uniqueValue(All_Products,"category") 
  const company=uniqueValue(All_Products,'company')
  const colors =uniqueValue(All_Products,'colors')
 
-console.log(price,max_price,min_price)
  
   return (
     <Wrapper>
@@ -67,9 +66,27 @@ console.log(price,max_price,min_price)
        </div>
 <div>
 <h2 className='title mg-t'>price</h2>
-  
+ <h3>{price}</h3>
+<input className='price' type="range" id="vol" name="price" onChange={sortCategory}  
+          value={price}
+          min={min_price}
+            max={max_price}
+            
+            />
+
 </div>
   
+<div className='ship'><span>shipping</span>
+   <input name="shipping" onClick={sortCategory} type="checkbox" checked={shipping}/>
+  </div>
+
+
+
+<div className='clear'>
+
+  <button onClick={clearFilter}>clear filters</button>
+</div>
+
 
     </Wrapper>
   )
@@ -79,15 +96,32 @@ export default FilterCategory
 
 
 const Wrapper=styled.div`
-  .title{
+.ship{
+  margin-top:3rem;
+  display:flex;
+  width:50%;
+  color:#707c94;
+  font-size:1.8rem;
+   flex-direction:row;
+   justify-content:space-between;
+   column-gap:5px;
+  align-items:center;
+ input{
+  width:20px;
+ }
+}
+.price{
+  width:50%;
+}
+.title{
     font-size:2.4rem;
     color:#888;
     margin-bottom:2rem;
   }
   .se{
   border:none;
-  color:#707c94; 
-  
+  color:#707c94;
+
 }
 .category{
    button{
@@ -95,7 +129,9 @@ const Wrapper=styled.div`
     background:transparent;
     width:fit-content;
     cursor: pointer;
-   }
+    color:#707c94; 
+ 
+  }
 }
 
   .mg-t{

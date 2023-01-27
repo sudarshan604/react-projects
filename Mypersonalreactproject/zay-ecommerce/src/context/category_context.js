@@ -2,7 +2,7 @@ import reducer from "../reducer/category_reducer";
 import { useReducer,useEffect, useContext } from "react";
 import { createContext } from "react";
 import { useGlobalProductContext } from "./product_context";
-import { ALL_PRODUCT_BEGIN, SORT_PRODUCT,UPDATE_SORT,UPDATE_CATEGORY,SORT_CATEGORY } from "../action/action";
+import { ALL_PRODUCT_BEGIN, SORT_PRODUCT,UPDATE_SORT,UPDATE_CATEGORY,SORT_CATEGORY,CLEAR_FILTER } from "../action/action";
 
 
 const CategoryContext=createContext()
@@ -16,7 +16,7 @@ export const CategoryProvider=({children})=>{
   All_Products:[],
   filter_Products:[],
    sort:'',
-  filters:[{
+  filters:{
      text:'',
      category:'all',
      company:'all',
@@ -24,9 +24,9 @@ export const CategoryProvider=({children})=>{
      price:0,
      max_price:0,
      min_price:0,
-     shipping:false     
+     shipping:false,    
    }
-  ]
+  
  
 }
 
@@ -47,7 +47,7 @@ useEffect(()=>{
 useEffect(()=>{
    dispatch({type:SORT_CATEGORY})
 
-},[state.sort_category])
+},[state.filters])
 
 const updateSort=(e)=>{
  const value=e.target.value
@@ -67,13 +67,24 @@ const sortCategory=(e)=>{
        value=e.target.dataset.color
 
  }
-
- console.log(value)
-
+ if(name==="price"){
+    value=Number(value)
+ }
+if(name==="shipping")
+{
+   value=e.target.checked
 }
 
 
-return <CategoryContext.Provider value={{...state,updateSort,sortCategory}}>
+dispatch({type:UPDATE_CATEGORY,payload:{name,value}})
+}
+
+const clearFilter=()=>{
+
+   dispatch({type:CLEAR_FILTER})
+}
+
+return <CategoryContext.Provider value={{...state,updateSort,sortCategory,clearFilter}}>
      {children}
 </CategoryContext.Provider>
 
