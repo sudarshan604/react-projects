@@ -15,9 +15,19 @@ export const CategoryProvider=({children})=>{
  const initialState={
   All_Products:[],
   filter_Products:[],
-  category:[], 
-  sort:'',
-  sort_category:'', 
+   sort:'',
+  filters:[{
+     text:'',
+     category:'all',
+     company:'all',
+     color:'all',
+     price:0,
+     max_price:0,
+     min_price:0,
+     shipping:false     
+   }
+  ]
+ 
 }
 
 const [state,dispatch]=useReducer(reducer,initialState)
@@ -44,8 +54,21 @@ const updateSort=(e)=>{
  dispatch({type:UPDATE_SORT,payload:value})
 }
 
-const sortCategory=(value)=>{
-   dispatch({type:UPDATE_CATEGORY,payload:value})
+const sortCategory=(e)=>{
+   let value=e.target.value
+   const name=e.target.name
+   if(name==="category")
+   {
+       value=e.target.textContent
+
+ }
+ if(name==="color")
+   {
+       value=e.target.dataset.color
+
+ }
+
+ console.log(value)
 
 }
 

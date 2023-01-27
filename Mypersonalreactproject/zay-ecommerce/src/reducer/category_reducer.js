@@ -4,10 +4,16 @@ const reducer=(state,action)=>{
  
   if(action.type===ALL_PRODUCT_BEGIN)
   {
-    const ca=action.payload.map(item=>item.category)
-    const uniqueCategory=["All",...new Set(ca)]
+    let maxprice=action.payload.map(p=>p.price)
+
+     maxprice=Math.max(...maxprice)
    
-    return {...state,All_Products:action.payload,category:uniqueCategory,filter_Products:action.payload}
+    return {...state,All_Products:action.payload,filter_Products:action.payload, filters:{
+      ...state.filters,
+      max_price:maxprice,
+      price:maxprice,
+      min_price:0       
+    }}
   }
 
 if(action.type===UPDATE_SORT)

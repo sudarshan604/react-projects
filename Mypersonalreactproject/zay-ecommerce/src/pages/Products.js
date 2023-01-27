@@ -3,11 +3,11 @@ import { ProductList,FilterCategory } from "../components"
 import styled from "styled-components"
 const Product=()=>{
  
- const {All_Products:products,category}=useGlobalCategoryContext()
+ const {All_Products:product}=useGlobalCategoryContext()
   
 
   return <Wrapper>
-       <FilterCategory category={category}/>
+       <FilterCategory/>
         <ProductList/>
 </Wrapper>
 }

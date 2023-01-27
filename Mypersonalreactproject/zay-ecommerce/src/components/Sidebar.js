@@ -14,7 +14,7 @@ function Sidebar() {
          return <li key={item.id}>
     <Link className="header-link" to={item.pagination}>{item.name}</Link>
 </li>
-})}``
+})}
 </section>
 
     </Wrapper>
