@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import styled from "styled-components";
+import { useGlobalCartContext } from "../context/cart_context";
 
-function AddCart({ stock }) {
+function AddCart({ stock,id,product }) {
   const [quantity, setQuantity] = useState(0);
-
+ const {addToCart}=useGlobalCartContext()
 
 useEffect(()=>{
 
@@ -36,9 +37,8 @@ if(quantity>stock)
             </button>
           </div>
         </div>
-       <button type="button" className="add-btn">Add to Cart</button>
-      
-      </div>
+       <button onClick={()=>addToCart(id,quantity,product)} type="button" className="add-btn">Add to Cart</button>
+  </div>
     </Wrapper>
   );
 }

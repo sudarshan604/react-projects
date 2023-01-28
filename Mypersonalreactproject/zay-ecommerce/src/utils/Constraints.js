@@ -15,7 +15,7 @@ export const uniqueValue=(product,filterItem)=>{
   }
    
   
-  const uniqueCategory=["All",...new Set(uniqueSelect)]
+  const uniqueCategory=["all",...new Set(uniqueSelect)]
 
 
 

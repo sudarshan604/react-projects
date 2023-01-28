@@ -42,21 +42,21 @@ function FilterCategory() {
       <h2 className='title mg-t'>colors</h2>
        <div className='color'>
        {colors.map((item,index)=>{
-        if(item=="All")
+        if(item=="all")
         {
            return<button
            key={index}
            data-color="all" 
             name="color"
-           style={{color:"#707c94"}}  onClick={(e)=>{
+           style={{color:"#707c34"}}  onClick={(e)=>{
             sortCategory(e)     
             setMainColor('')}}>All</button>
         }
       return <button 
-     key={index}
-      name="color"
-      data-color={item}
-      style={{backgroundColor:item}} onClick={(e)=>{
+       key={index}
+       name="color"
+       data-color={item}
+       style={{backgroundColor:item}} onClick={(e)=>{
         setMainColor(item)
         sortCategory(e)
 
@@ -83,7 +83,6 @@ function FilterCategory() {
 
 
 <div className='clear'>
-
   <button onClick={clearFilter}>clear filters</button>
 </div>
 
@@ -172,5 +171,19 @@ const Wrapper=styled.div`
     width:20px;
     height:20px;
   }
+ 
 }
+.clear{
+    width:fit-content;
+    margin-top:3rem;
+    button{
+      cursor: pointer;
+      padding:3px 9px;
+      border:none;
+      background-color:red;
+      color:#fff;
+      width:fit-content;
+    }
+  }
+
 `

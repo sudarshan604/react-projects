@@ -6,10 +6,11 @@ import {singleUrl} from '../utils/Constraints'
 import { useState } from 'react'
 import { Loading,ProductImage,Color,AddCart } from '../components'
 import Star from '../components/Star'
+import { useGlobalCartContext } from '../context/cart_context'
 
 
 const SingleProduct=()=> {
-  
+
   const {singleProduct,single_product:product,isLoading,isError}=useGlobalProductContext()
   const {id}=useParams()
   
@@ -30,7 +31,6 @@ if(isLoading)
 
 const {images,name,description,price,company,stars,colors,stock}=product
   
-console.log(product)
   return (<Wrapper>   
     <div className='container'>
             <section className='section-first'>
@@ -51,7 +51,7 @@ console.log(product)
                                <h3 className='heading-tertiary'>Description:</h3>
                               <p>{description}</p>
                             </div>
-                          <AddCart stock={stock}/>
+                          <AddCart stock={stock} product={product} id={id}/>
                          </div>
                        </div> 
                       

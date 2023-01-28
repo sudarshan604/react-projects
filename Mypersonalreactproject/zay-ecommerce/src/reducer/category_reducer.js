@@ -86,26 +86,16 @@ if(action.type===SORT_CATEGORY)
  const {All_Products} =state
 const {text,category,company,color,price,max_price,min_price,shipping,}=state.filters
 
-console.log(category)
 let tempProducts=All_Products
 
-if(category){
-   if(category.toLowerCase()==="all")
-   {
-   tempProducts=All_Products
-  }
-   else{
-   tempProducts=tempProducts.filter(item=>item.category===category) 
-   }
+if(category!=="all"){
+
+  tempProducts=tempProducts.filter(item=>item.category===category) 
 }
-if(company){
-  if(company.toLowerCase()==="all")
-  {
-  tempProducts=All_Products
- }
-  else{
+if(company!=="all"){
+
   tempProducts=tempProducts.filter(item=>item.company===company) 
-  }
+  
 }
 
 

@@ -2,17 +2,18 @@ import React from "react";
 import { BsCheck } from 'react-icons/bs'
 import styled from "styled-components";
 import { useState } from "react";
-
+import { useGlobalCartContext } from "../context/cart_context";
 function Color({ colors=[]}) {
-  
+  const {addtTocart,addColor}=useGlobalCartContext()
+
   const [clickColor,setClickColor]=useState('')
   
   return (<Wrapper>
 
     <div className="flex color-div">
-      {colors.map((color) => {
+      {colors.map((color,index) => {
         return (
-          <div
+          <div key={index}
             style={{
               background:color,
               width: "30px",
@@ -20,7 +21,9 @@ function Color({ colors=[]}) {
               borderRadius: "50%",
             }}
             className="flex"
-            onClick={()=>setClickColor(color)}
+            onClick={()=>{setClickColor(color)
+              addColor(color)
+            }}
             >
              { clickColor===color && <BsCheck style={{ fontSize: "30px", color: "#fff" }} />
       

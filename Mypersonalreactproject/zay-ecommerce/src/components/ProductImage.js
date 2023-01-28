@@ -7,7 +7,6 @@ export default function ProductImage({images=[]}) {
   const [index,setIndex]=useState()
 
   
-console.log(image)
   return (
     <div>
  <img src={image==''?null:image[0].thumbnails.large.url
