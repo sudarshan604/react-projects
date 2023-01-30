@@ -46,3 +46,11 @@ font-weight:300;
   }
   
 }
+.cart-grid{
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+   justify-items:center;
+  margin-bottom: 4rem;
+  align-items: center;
+  }

@@ -9,6 +9,9 @@ import Color from "./Color";
 import AddCart from "./AddCart";
 import ProductList from "./ProductList";
 import FilterCategory from "./FilterCategory";
+import CartContent from "./CartContent";
+import CartColumns from "./CartColumns";
+import CartItem from "./CartItem";
 export {
    Navbar, Hero, Category, Feature, SharedProduct,
  Loading,
@@ -16,5 +19,8 @@ export {
  Color,
  AddCart,
  ProductList,
- FilterCategory
+ FilterCategory,
+ CartColumns,
+ CartContent,
+ CartItem
 };

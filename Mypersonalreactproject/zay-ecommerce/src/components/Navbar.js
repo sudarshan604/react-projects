@@ -40,7 +40,9 @@ const {isOpen,openSideBar}=useGlobalProductContext()
             </ul>
            <section className="header-icons flex">
                  <AiOutlineSearch className="icon"/>
-                 <AiOutlineShoppingCart className="icon"/>
+                  <Link to="/cart">
+                       <AiOutlineShoppingCart className="icon"/>
+                </Link> 
                  <AiOutlineUserAdd className="icon"/>
            </section>
           <div className="ham">
@@ -102,6 +104,7 @@ const Wrapper=styled.header`
 .icon{
   fill:#111;
   font-size:3rem;
+  cursor: pointer;
 } 
 
 .ham-icon{

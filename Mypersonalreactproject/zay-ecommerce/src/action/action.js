@@ -11,3 +11,5 @@ export const UPDATE_CATEGORY="UPDATE_CATEGORY"
 export const SORT_CATEGORY="SORT_CATEGORY"
 export const CLEAR_FILTER="clear_filter"
 export const CART_BEGIN="cart_begin"
+export const REMOVE_CART_ITEM='remove item'
+export const CLEAR_CART="clear_cart"

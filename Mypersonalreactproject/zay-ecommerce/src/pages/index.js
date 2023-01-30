@@ -3,11 +3,12 @@ import Product from "./Products";
 import Error from "./Error";
 import Single from "./SinglePaage";
 import About from "./About";
-
+import Cart from "./CartPage";
 export {
   Home,
   Product,
   Error,
   Single,
-  About
+  About,
+  Cart
 }

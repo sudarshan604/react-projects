@@ -1,5 +1,5 @@
 
-import { CART_BEGIN } from "../action/action"
+import { CART_BEGIN, REMOVE_CART_ITEM,CLEAR_CART } from "../action/action"
 
 const reducer=(state,action)=>{
 
@@ -45,6 +45,19 @@ const reducer=(state,action)=>{
       
 
    }
+   if(action.type===REMOVE_CART_ITEM)
+   {
+         const id=action.payload
+
+         const tempCart=state.cart.filter(i=>i.id!==id)
+
+   return {...state,cart:tempCart}
+   }
+   if(action.type===CLEAR_CART)
+   {
+        return{...state,cart:[]}
+   }
+
 return {...state}
 
    throw new Error(`No Matching "${action.type}" - action type`)

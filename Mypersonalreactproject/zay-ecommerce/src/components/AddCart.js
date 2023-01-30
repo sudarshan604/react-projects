@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useGlobalCartContext } from "../context/cart_context";
+
 
 function AddCart({ stock,id,product }) {
   const [quantity, setQuantity] = useState(0);
@@ -37,7 +39,11 @@ if(quantity>stock)
             </button>
           </div>
         </div>
-       <button onClick={()=>addToCart(id,quantity,product)} type="button" className="add-btn">Add to Cart</button>
+       <button onClick={()=>addToCart(id,quantity,product)} type="button" className="add-btn">
+        <Link className="add-link" to="/cart">
+        Add to Cart
+        </Link>
+        </button>
   </div>
     </Wrapper>
   );
@@ -68,8 +74,14 @@ const Wrapper = styled.div`
       border:none;
       color:#fff;
       font-size:1rem;
+    
     }
    }
+  }
+  .add-link,
+  .add-link:visited{
+    text-decoration:none;
+    color:#fff; 
   }
  .add-btn{
   background-color:#59Ab6E;
