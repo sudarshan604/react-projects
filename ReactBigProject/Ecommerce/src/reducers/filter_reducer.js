@@ -88,7 +88,6 @@ if(action.type==FILTER_PRODUCTS)
   const {all_products}=state
   const {text,company,category,color,price,shipping} =state.filters
   let tempProducts=[...all_products]
-  console.log(text)
   // text
   if(text){
      tempProducts=tempProducts.filter((product)=>{
