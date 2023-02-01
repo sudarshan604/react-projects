@@ -13,3 +13,4 @@ export const CLEAR_FILTER="clear_filter"
 export const CART_BEGIN="cart_begin"
 export const REMOVE_CART_ITEM='remove item'
 export const CLEAR_CART="clear_cart"
+export const CART_ITEM_COUNT="count_item"

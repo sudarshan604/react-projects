@@ -5,12 +5,14 @@ import { FaTrash } from 'react-icons/fa'
 function CartItem({id,name,image,quantity,color,price}) {
   
  const {removeItem}=useGlobalCartContext()
-  return (
+ console.log(quantity) 
+ return (
     <Wrapper className='cart-grid'>
             <div className='item'>
                  <img src={image} alt={name} />           
                 <div>
                 <h3>{name}</h3>
+                
                 <div className='color flex'>
                     color:<span style={{backgroundColor:color}}></span>
                  </div>
@@ -22,7 +24,7 @@ function CartItem({id,name,image,quantity,color,price}) {
              <h3>{price}</h3>
           </div>          
          <div>
-
+              <h3>{quantity}</h3>
          </div>
             <div className='quantity'>
                <h3>{quantity*price}</h3>

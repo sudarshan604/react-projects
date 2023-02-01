@@ -7,10 +7,10 @@ function CartPage() {
 
 if(cart.length<1)
 {
-   return <div className="container">
-        <h3>no, item found in the cart</h3>
-        <Link to="/products">go to shop</Link>
-   </div>
+   return <Wrapper className="container no-item">
+        <h1>no, item found in the cart</h1>
+        <Link to="/products" className="link">go to shop</Link>
+   </Wrapper>
 }
 
   return (
@@ -25,7 +25,17 @@ if(cart.length<1)
 export default CartPage
 
 const Wrapper =styled.section`
-  margin-top:10rem;
+  .no-item{
+    h3{
+     font-size:4rem;
+    }
+
+    }
+.link{
+  text-decoration:none;
+  font-size:1.8rem;
+}
+    margin-top:10rem;
   
 
 `

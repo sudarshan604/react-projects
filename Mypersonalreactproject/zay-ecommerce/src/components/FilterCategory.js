@@ -7,7 +7,7 @@ import { uniqueValue } from '../utils/Constraints'
 function FilterCategory() {
   const [isUnderline,setUnderline]=useState('')
   const [mainColor,setMainColor]=useState('')
-  const {clearFilter,sortCategory,All_Products,filters:{price,max_price,min_price,shipping}}=useGlobalCategoryContext()
+  const {clearFilter,sortCategory,All_Products,filters:{price,max_price,min_price,shipping,text}}=useGlobalCategoryContext()
 
  const category=uniqueValue(All_Products,"category") 
  const company=uniqueValue(All_Products,'company')
@@ -16,6 +16,14 @@ function FilterCategory() {
  
   return (
     <Wrapper>
+           <input
+            type="text"
+            name="text"
+            placeholder="search"
+            className="search-input"
+            value={text}
+            onChange={sortCategory}
+          />
         <h2 className='title'>Category</h2>
     <div className='category'>
         {category.map((item,index)=>{
@@ -95,6 +103,13 @@ export default FilterCategory
 
 
 const Wrapper=styled.div`
+.search-input{
+  border:none;
+  outline:none;
+  margin-bottom:1rem;
+  border-bottom:1PX SOLID #999;
+  padding-bottom:.3rem;
+}
 .ship{
   margin-top:3rem;
   display:flex;

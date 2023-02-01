@@ -1,5 +1,5 @@
 
-import { CART_BEGIN, REMOVE_CART_ITEM,CLEAR_CART } from "../action/action"
+import { CART_BEGIN, REMOVE_CART_ITEM,CLEAR_CART, CART_ITEM_COUNT } from "../action/action"
 
 const reducer=(state,action)=>{
 
@@ -37,7 +37,7 @@ const reducer=(state,action)=>{
              image:product.images[0].url,
              price:product.price,
             max:product.stock,
-
+        
            }
            return {...state,cart:[...state.cart,newItem]}
       }
@@ -57,8 +57,23 @@ const reducer=(state,action)=>{
    {
         return{...state,cart:[]}
    }
+if(action.type===CART_ITEM_COUNT)
+{
+   const {total_items,total_price}=state.cart.reduce(((acc,item)=>{
+        
+      const {quantity,price}=item
+      acc.total_items+=quantity
+      acc.total_price+=price*quantity
+  return acc
+   }),
+   {
+  total_items:0,
+  total_price:0
+   })
+return{...state,total_items,total_price}
+}
 
-return {...state}
+   return {...state}
 
    throw new Error(`No Matching "${action.type}" - action type`)
 }

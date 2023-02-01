@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useReducer } from 'react'
 import reducer from '../reducer/cart_reducer'
 import data from '../utils/HeroData'
-import { CART_BEGIN,REMOVE_CART_ITEM,CLEAR_CART } from '../action/action'
+import { CART_BEGIN,REMOVE_CART_ITEM,CLEAR_CART,CART_ITEM_COUNT } from '../action/action'
 const CartContext=React.createContext()
 
 
@@ -21,6 +21,8 @@ const getLocalData=()=>{
 
 const initialState={
   cart:getLocalData(),
+   total_items:0,
+   total_price:0
 }
 
 
@@ -39,7 +41,9 @@ const [color,setColor]=useState()
 
 
 useEffect(()=>{
+  dispatch({type:CART_ITEM_COUNT})
   localStorage.setItem('cart',JSON.stringify(state.cart))
+
 },[state.cart])
 
 

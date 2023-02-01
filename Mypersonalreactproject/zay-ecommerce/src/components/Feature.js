@@ -17,7 +17,7 @@ const  new_product=product.slice(0,3)
 
    
          <div className="header">
-                <h4>Categories of The Month</h4>
+                <h4>Featured of The Month</h4>
                 <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
               </div>
              <div className="product-box">

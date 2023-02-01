@@ -88,6 +88,12 @@ const {text,category,company,color,price,max_price,min_price,shipping,}=state.fi
 
 let tempProducts=All_Products
 
+if(text){
+  tempProducts=tempProducts.filter((product)=>{
+    return product.name.toLowerCase().startsWith(text)
+  })
+}
+
 if(category!=="all"){
 
   tempProducts=tempProducts.filter(item=>item.category===category) 

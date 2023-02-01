@@ -38,10 +38,5 @@ export const header=
 
    },
 
-   {
-    id:4,
-    pagination:'/contact',
-    name:'Contact'
-
-   },
+   
 ]

@@ -6,8 +6,13 @@ import { header } from "../utils/Helper";
 import { useGlobalProductContext } from "../context/product_context";
 import Sidebar from "./Sidebar";
 import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useGlobalCartContext } from "../context/cart_context";
+
 const NavBar=()=>{
 const {isOpen,openSideBar}=useGlobalProductContext()
+const {total_items}=useGlobalCartContext()
+const { loginWithRedirect,user, isAuthenticated,logout } = useAuth0();
 
     return (<React.Fragment>
          {isOpen && <Sidebar/> }
@@ -36,14 +41,25 @@ const {isOpen,openSideBar}=useGlobalProductContext()
                   <Link className="header-link" to={item.pagination}>{item.name}</Link>
                   </li>
                 })}
-
+                 <li>
+               {  isAuthenticated && <Link className="header-link" to='/checkout'>checkout</Link>
+}
+                 </li>
             </ul>
            <section className="header-icons flex">
-                 <AiOutlineSearch className="icon"/>
-                  <Link to="/cart">
-                       <AiOutlineShoppingCart className="icon"/>
+                  <div className="relative">
+                <Link to="/cart" className="btn flex">
+                     Cart <AiOutlineShoppingCart className="icon"/>
                 </Link> 
-                 <AiOutlineUserAdd className="icon"/>
+                <span className="total-i flex"> {total_items} </span>
+                  </div>
+                {user?<button onClick={()=>logout({ logoutParams: { returnTo: window.location.origin }}) } className="btn flex">
+                     logout<AiOutlineUserAdd className="icon"/>
+                </button>:
+                <button onClick={loginWithRedirect} className="btn flex">
+                       login<AiOutlineUserAdd className="icon"/>
+                </button>
+      } 
            </section>
           <div className="ham">
              <FiMenu onClick={()=>openSideBar()} className="icon ham-icon"/>
@@ -58,7 +74,32 @@ const {isOpen,openSideBar}=useGlobalProductContext()
 export default NavBar
 
 const Wrapper=styled.header`
- font-size:1.3rem;
+.relative{
+  position:relative;
+}
+.total-i{
+  justify-content:center;
+  padding:.3rem;
+  width:2rem;
+  height:2rem;
+  position:absolute;
+  top:-1rem;;
+  font-size:2rem;
+  color:#fff;
+  background-color:#ab7a5b;
+  border-radius:50%;
+  right:-2rem;
+}
+
+.btn{
+   border:none;
+  cursor: pointer;
+  background:transparent;
+ font-size:2rem;
+ text-decoration:none;
+}
+
+font-size:1.3rem;
  color:white;
  background-color:#212529;
  .first-nav{
@@ -98,7 +139,7 @@ const Wrapper=styled.header`
   
   
  .header-icons{
-   column-gap:1.4rem;
+   column-gap:2rem;
 }
   
 .icon{
