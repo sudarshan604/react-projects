@@ -4,6 +4,8 @@ import { removeItems } from '../features/cartSlice'
 import { useDispatch } from 'react-redux'
 import {increase,decrease} from '../features/cartSlice'
 
+
+
 function CartItem({id,img,title,price,amount}) {
   const dispatch=useDispatch()
   
