@@ -1,7 +1,11 @@
 export default[
-   {
+  {
+  id:1234,
+  title:"All Category"
+  },
+    {
     id:0,
-    img:"images/car.png",
+    img:"images/home.png",
     name:"car img"
    },
    {
@@ -11,42 +15,42 @@ export default[
    },
    {
     id:2,
-    img:"images/car.png",
+    img:"images/cycle.png",
     name:"car img"
    },
    {
     id:3,
-    img:"images/car.png",
+    img:"images/fashion.png",
     name:"car img"
    },
    {
     id:4,
-    img:"images/car.png",
+    img:"images/jobs.png",
     name:"car img"
    },
    {
     id:5,
-    img:"images/car.png",
+    img:"images/otherservice.png",
     name:"car img"
    },
    {
     id:6,
-    img:"images/car.png",
+    img:"images/pets.png",
     name:"car img"
    },
    {
     id:7,
-    img:"images/car.png",
-    name:"car img"
+    img:"images/plug.png",
+    name:"plug"
    },
    {
     id:8,
-    img:"images/car.png",
-    name:"car img"
+    img:"images/services.png",
+    name:"services"
    },
    {
     id:9,
-    img:"images/car.png",
+    img:"images/yourlogo.png",
     name:"car img"
    },
 ]

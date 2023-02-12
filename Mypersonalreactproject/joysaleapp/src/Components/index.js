@@ -1,7 +1,10 @@
 import Navbar from "./Navbar";
-
-
-
+import Main from "./Main";
+import Products from "./Products";
+import Footer from "./Footer";
 export {
-     Navbar
+     Navbar,
+     Main,
+     Products,
+     Footer
 }

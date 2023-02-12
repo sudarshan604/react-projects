@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function Slider({id,img,name}) {
+function Slider({id,img,name,title}) {
     return (
     <Wrapper className='flex'>
-        <img src={img} alt="name"/>
-        <h3>{name}</h3>
+      {!title && <img src={img} alt="name"/>}
+      {!title?<h3>{name}</h3>:<h3>{title}</h3>}
     </Wrapper>
   )
 }

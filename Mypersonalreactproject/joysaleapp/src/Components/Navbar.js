@@ -8,21 +8,49 @@ import Slider from './Slider';
 import data from '../data/data';
 import { useState } from 'react';
 import { useRef } from 'react';
+import { useEffect } from 'react';
 function Navbar() {
-   
-    const scrollElement=useRef()
-   
-    const elem=scrollElement.current.getBoundingClientRect();
+    const [showArrow,setArrow]=useState(true)
+   const [leftArrow,setLeftArrow]=useState(true)
+   const scrollElement=useRef()
 
-    console.log(elem.width)
+
+   
+  
+
+    
+
 
     function rightSlide(){
-        scrollElement.current.scrollLeft += 10;  
-         
+        const elem=scrollElement.current.getBoundingClientRect();
+        const {current}=scrollElement
+      if(scrollElement.current.scrollLeft + current.clientWidth >=current.scrollWidth){
+        setArrow(!showArrow)
+        return
     }
+  
+    if(current.scrollLeft>=0)
+    {
+        setLeftArrow(true)
+    }
+
+      scrollElement.current.scrollLeft += 250;  
+    }
+   
     function leftSlide(){
-        scrollElement.current.scrollLeft-=10;  
-      }
+        const {current}=scrollElement
+         if(current.scrollLeft + current.clientWidth<current.scrollWidth){
+            setArrow(true)
+         }
+     if(current.scrollLeft<=0)
+     {
+         setLeftArrow(!leftArrow)
+          return
+        }  
+   
+       current.scrollLeft-=250;  
+        console.log(current.scrollLeft)
+    }
 
     return (
    <Wrapper>
@@ -58,12 +86,14 @@ function Navbar() {
            return<Slider key={item.id} {...item}/>
         })}
  </section>
-                <button onClick={rightSlide} className="btn btn-right">
+         { showArrow &&<button onClick={rightSlide} className="btn btn-right">
                      <AiOutlineRight className='icon'/>
                 </button>
-                <button onClick={leftSlide}  className="btn btn-left">
+           }
+         
+       { leftArrow&&<button onClick={leftSlide}  className="btn btn-left">
                      <AiOutlineLeft className='icon'/>
-                </button>
+                </button>}
         </footer>
  
     </Wrapper>
@@ -154,7 +184,9 @@ const Wrapper=styled.nav`
 .slider-section{
   display:flex;
  overflow:hidden;
+ scroll-behavior: smooth;
  width:95%;
+ padding-right:60rem;
  margin:0 auto;
 }
 .btn{
