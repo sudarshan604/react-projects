@@ -50,6 +50,9 @@ min-width:fit-content;
     column-gap:.3rem;
     font-size:1.6rem;
     padding:1.6rem 1.5rem 1.6rem 4rem;
+    &:hover{
+      color:red;
+    }
     img{
         width:3rem;
     }
