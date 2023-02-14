@@ -18,7 +18,7 @@ function Footer() {
             </figure>  
        </aside>
        <aside className='aside third-aside'>
-          <button>Banner Advertise</button>
+          <button className='btn'>Banner Advertise</button>
      </aside>
       </section>
 
@@ -43,6 +43,15 @@ width:90%;
 margin:0 auto;
  margin-top:15rem;
 padding-bottom:7rem;
+
+.btn{
+  padding:1rem 1.5rem;
+  background-color:#e40046;
+  color:#fff;
+  border:none;
+  border-radius:5px;
+  width:17rem;
+}
 .para{
     font-size:1.4rem;
     margin-top:1rem;
@@ -54,7 +63,8 @@ padding-bottom:7rem;
      column-gap:1rem;
      width:fit-content;
      li{
-         color:#EEE7DF;
+         /* color:#EEE7DF; */
+         color:rgba(0,0,0,.7);
          position:relative;
        padding-right:1rem;
          &:after{  

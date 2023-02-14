@@ -52,6 +52,7 @@ const handleProduct=()=>{
 export default Products
 
 const Wrapper=styled.section`
+/* margin-top:40rem; */
     padding-bottom:7rem;
     background-color:#F8F6F0;
 .product-list{

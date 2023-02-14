@@ -3,10 +3,12 @@ import styled from "styled-components"
 import {AiOutlineLeft,AiOutlineRight} from "react-icons/ai"
 import { useState,useEffect } from "react"
 import data from "../data/ScrollData"
-
+import { useGlobalAppContext } from "../context/category"
 const Carousel=()=>{
+
  const [people,setPeople]=useState(data)
  const [index,setIndex]=useState(0)
+ const {closeCategory}=useGlobalAppContext()
  let isActive=0
  useEffect(() => {
   let lastIndex = people.length - 1;
@@ -29,7 +31,7 @@ return ()=>clearInterval(interval)
 
 
 
-  return<Wrapper>
+  return<Wrapper  onMouseOver={closeCategory}>
          <div className="carousal-content container flex">
            {
                  people.map((item,itemIndex)=>{

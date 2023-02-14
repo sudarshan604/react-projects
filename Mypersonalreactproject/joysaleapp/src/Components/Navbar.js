@@ -9,11 +9,12 @@ import data from '../data/data';
 import { useState } from 'react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
+import { useGlobalAppContext } from '../context/category';
 function Navbar() {
     const [showArrow,setArrow]=useState(true)
    const [leftArrow,setLeftArrow]=useState(true)
    const scrollElement=useRef()
-
+  const {openModelSign,openSignUp,closeCategory,handleScroll}=useGlobalAppContext()
 
    
   
@@ -22,8 +23,9 @@ function Navbar() {
 
 
     function rightSlide(){
-        const elem=scrollElement.current.getBoundingClientRect();
-        const {current}=scrollElement
+      const elem=scrollElement.current.getBoundingClientRect();
+      const {current}=scrollElement
+      handleScroll(current.scrollLeft)
       if(scrollElement.current.scrollLeft + current.clientWidth >=current.scrollWidth){
         setArrow(!showArrow)
         return
@@ -54,26 +56,26 @@ function Navbar() {
 
     return (
    <Wrapper>
-     <header className='flex'>
+     <header onMouseOver={closeCategory} className='flex'>
          <figure>
            <img src={"https://joysale.appkodes.in/frontend/web/media/logo/7470_3208_6644_app_logo.png"} alt="title name"/>
           </figure>
          <div className='search-field'>
             <div className='first-i'>
               <span>
-                <BiSearchAlt className='icon'/>
+                <BiSearchAlt className='icon dark'/>
             </span>
             <input type="text" placeholder='Search products'/>  
             </div>
             <div className='second-i'>
-               <span><MdLocationPin className='icon'/></span>
+               <span><MdLocationPin className='icon dark'/></span>
                <input type="text" placeholder='Global Stuff'/>
                <div className='sp'>Go</div>  
              </div>
           </div>
         <ul>
-           <li>Log in</li>
-           <li>Sign up</li>
+           <li onClick={openModelSign}>Log in</li>
+           <li onClick={openSignUp}>Sign up</li>
            <li>
             <BsCamera/>
             SELL
@@ -103,6 +105,9 @@ function Navbar() {
 export default Navbar
 
 const Wrapper=styled.nav`
+ position:sticky;
+ top:0;
+ z-index:20;
  header{
      padding:1.2rem 2rem;
     background-color:#e40046;
@@ -121,7 +126,14 @@ const Wrapper=styled.nav`
         width:50%;
        display:flex;
      align-items:center;
-     border-right:1px solid brown;
+     border-right:1px solid rgba(0,0,0,.2);
+     .icon{
+      margin-left:.6rem;
+     }
+   .dark{
+     color:rgba(0,0,0,.5) !important;
+     
+   }
      input{
         margin-left:.5rem;
      }
@@ -142,17 +154,17 @@ const Wrapper=styled.nav`
 }
      .sp{
         color:#444;
-     font-weight:700;
-   background-color:#999;
-    align-self:center;
-    align-content:stretch;
-   margin-left:auto;
-  padding:0 1.5rem;
+        font-weight:700;
+        align-self:center;
+        align-content:stretch;
+        margin-left:auto;
+        padding:1.3rem 1.8rem;
+        background-color:rgba(0,0,0,.2);
  
 }
     }
     .icon{
-    color:brown;
+    color:rgba(0,0,0,.5);
     font-size:2rem;
    }
    input{
@@ -169,25 +181,36 @@ const Wrapper=styled.nav`
  ul {
      display:flex;
      justify-content:space-between;
+     align-items:center;
      row-gap:2rem;
      width:15%;
  li{
   list-style:none;;
   font-weight:700;
+  cursor: pointer;
 }
  li:last-child{
     border:1px solid #fff;
+    padding:.6rem 1.5rem;
+    border-radius:5px;
+    display:flex;
+    align-items:center;
+    column-gap:1rem;
+
  }
   }
 
 }
 .slider-section{
   display:flex;
- overflow:hidden;
+  align-items:center;
  scroll-behavior: smooth;
+ column-gap:1rem;
+ overflow:hidden;
  width:95%;
- padding-right:60rem;
+ padding-right:20rem;
  margin:0 auto;
+ z-index:100;
 }
 .btn{
    position:absolute;
@@ -211,6 +234,8 @@ const Wrapper=styled.nav`
    left:1rem;
 }
 footer{
-    position:relative;
+    background-color:#fff;
+  position:relative;
 }
+
 `
