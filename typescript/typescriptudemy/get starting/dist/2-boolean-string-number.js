@@ -24,3 +24,16 @@ var RollNumber;
     RollNumber[RollNumber["Samantha"] = 5] = "Samantha";
 })(RollNumber || (RollNumber = {}));
 let studentRollNumber = RollNumber.sandra;
+let num1 = 2;
+let num2 = 3;
+if (num1 > num2) {
+    console.log(`${num1} is greater than ${num2}`);
+}
+let nums = [10, 20, 30, 40, 50, 60, 70];
+for (let i = 0; i < nums.length; i++) {
+    console.log(nums[i]);
+}
+let data = ["cosmos", 13, 50, "star"];
+for (let dataPoint in data) {
+    console.log(`${+dataPoint + 1}-${data[dataPoint]}`);
+}
