@@ -83,8 +83,8 @@ for(let i:number=0;i<nums.length;i++){
 let data:(string|number)[]=["cosmos",13,50,"star"]
 
 for(let dataPoint in data){
-
-  console.log(`${+dataPoint+1}-${data[dataPoint]}`)//+ change string index to number
+ 
+   console.log(`${+dataPoint+1}-${data[dataPoint]}`)//+ change string index to number
 
 }
 
