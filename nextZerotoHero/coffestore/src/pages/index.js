@@ -9,7 +9,6 @@ import CoffeeStoreData from '../data/coffee-store.json'
 const inter = Inter({ subsets: ['latin'] })
 
 export const getStaticProps = async () => {
-  console.log('get static props')
 return{ 
     props: { 
      CoffeeStore:CoffeeStoreData
