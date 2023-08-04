@@ -4,14 +4,22 @@ import styles from '@/styles/Home.module.css'
 import Banner from '@/components/Banner'
 import Image from 'next/image'
 import Card from '@/components/Card'
-import CoffeeStoreData from '../data/coffee-store.json'
+import { fetchCoffeStore } from 'lib/coffee-store'
+import useTrackLOcation from '../../hooks/use-track-location'
+import { useEffect, useContext } from 'react'
+import { ACTION_TYPES,StoreContext } from './_app'
 
 const inter = Inter({ subsets: ['latin'] })
 
+
+
 export const getStaticProps = async () => {
+
+  const CoffeeStore=await fetchCoffeStore()
+
 return{ 
     props: { 
-     CoffeeStore:CoffeeStoreData
+      CoffeeStore 
    } 
 };
 };
@@ -19,9 +27,36 @@ return{
 
 export default function Home(props) {
 
+  const {dispatch,state}=useContext(StoreContext)
+
+
+  const {
+    handleTrackLocation,
+    locationErrorMsg}=useTrackLOcation()
+
+// const [coffeStores,setCoffeeStores]=useState('')
+
 const handleClick=()=>{
-  console.log('click')
+  handleTrackLocation()
 }
+
+
+const fetchedCoffestre=async()=>{
+  const fetchedCoffeStore=await fetchCoffeStore(state.latLong,'30')
+
+//  setCoffeeStores(fetchedCoffeStore)
+ dispatch({
+  type:ACTION_TYPES.SET_COFFEE_STORES,
+  payload:{coffeeStores:fetchedCoffeStore}
+ })
+}
+
+useEffect(()=>{
+if(state.latLong){
+  fetchedCoffestre() 
+}
+
+},[state.latLong])
 
 return (
     <>
@@ -38,6 +73,25 @@ return (
         <div className={styles.heroImage}>
             <Image src="/static/hero-img.jpg" width={300} height={300}/>
         </div>
+        {state.coffeeStores.length>0 &&
+        <>
+          <h2 className={styles.heading2}>coffee store near me</h2>
+            <div className={styles.cardLayout}>
+                {state.coffeeStores.map(CoffeeStore=>{
+                   return (
+                    <Card 
+                    key={CoffeeStore.id}
+                    name={CoffeeStore.name} 
+                    img={CoffeeStore.imgUrl ||'https://images.unsplash.com/photo-1498804103079-a6351b050096?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2468&q=80' }
+                    href={`coffee-store/${CoffeeStore.id}`}  
+                    className={styles.card}
+                    />
+                   )
+                })}
+              </div>
+          </>}  
+               
+
         {props.CoffeeStore.length>0 &&
         <>
           <h2 className={styles.heading2}>Toronto coffee store</h2>
@@ -47,7 +101,7 @@ return (
                     <Card 
                     key={CoffeeStore.id}
                     name={CoffeeStore.name} 
-                    img={CoffeeStore.imgUrl}
+                    img={CoffeeStore.imgUrl ||'https://images.unsplash.com/photo-1498804103079-a6351b050096?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2468&q=80' }
                     href={`coffee-store/${CoffeeStore.id}`}  
                     className={styles.card}
                     />

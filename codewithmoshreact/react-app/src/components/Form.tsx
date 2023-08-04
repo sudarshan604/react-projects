@@ -21,7 +21,7 @@ const schema=z.object({
 const Form = () =>{
   
 
-const {register,handleSubmit,formState:{errors},isvalid}=useForm<FormData>({resolver:zodResolver(schema)})
+const {register,handleSubmit,formState:{errors},isValid}=useForm<FormData>({resolver:zodResolver(schema)})
 const onSubmit=(data:FieldValues)=>{
  console.log(data)   
 
@@ -46,8 +46,9 @@ const onSubmit=(data:FieldValues)=>{
       {errors.age && <p className='text-danger'>{errors.age.message}</p>}
 
     </div>
-  
-  <button disabled={!isvalid} type="submit" className="btn btn-primary">
+
+
+  <button disabled={!isValid} type="submit" className="btn btn-primary">
     submit
   </button>
  
