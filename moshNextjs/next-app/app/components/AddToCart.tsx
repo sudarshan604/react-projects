@@ -3,7 +3,7 @@ import React from 'react'
 
 const AddToCart = () => {
   return (
-    <div>    <button onClick={() => { } }>click</button>
+    <div> <button  className='btn btn-primary'>click</button>
     </div>
   )
 }
