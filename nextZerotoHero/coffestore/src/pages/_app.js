@@ -27,10 +27,6 @@ const storeReducer=(state,action)=>{
   
 
   }
-
-
-
-
 }
 
 
@@ -39,6 +35,7 @@ const StoreProvider=({children})=>{
    latLong:"",
    coffeeStores:[]
  }
+ 
 const [state,dispatch]=useReducer(storeReducer,initialState)
 
  return <StoreContext.Provider value={{state,dispatch }}>

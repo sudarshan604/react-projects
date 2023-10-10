@@ -12,7 +12,6 @@ import { ACTION_TYPES,StoreContext } from './_app'
 const inter = Inter({ subsets: ['latin'] })
 
 
-
 export const getStaticProps = async () => {
 
   const CoffeeStore=await fetchCoffeStore()
