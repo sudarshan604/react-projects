@@ -6,7 +6,7 @@ interface User{
     email:string;
 } 
 const UserTable =async () => {
-    const rest = await fetch('https://jsonplaceholder.typicode.com/users')
+    const rest = await fetch('https://jsonplaceholder.typicode.com/Xusers')
 
 const users:User[]= await rest.json()
   return (
